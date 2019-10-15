@@ -14,7 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //To fix the iOS13 navigation bar issue.  Source: https://sarunw.com/posts/uinavigationbar-changes-in-ios13/
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithOpaqueBackground()
+        coloredAppearance.backgroundColor = .systemPink
+        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+               
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        
         return true
     }
 
